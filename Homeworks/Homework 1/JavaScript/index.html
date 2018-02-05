@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
   <head>
     <title>Homework 1 - CSIS4251</title>
-    <script src="assets/js/tree.js"></script>
-    <script src="assets/js/parsePreOrder.js"></script>
-    <script src="assets/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
   <body>
-    <p id="demo"></p>
+    <h1>Binary Tree Display</h1>
+    <hr/>
+    <form>
+      <input type="text" id="string" name="string" placeholder="Input here.."><input id="clickMe" type="button" value="Convert!" onclick="onStartClick();" />
+    </form>
+    <hr />
+    <div id="newTable"></div>
+    <hr />
+    <div class="centered">
+      <p id="preorder"></p>
+      <p id="inorder"></p>
+      <p id="postorder"></p>
+    </div>
+
+    <script src="assets/js/draw/createTreeOnPage.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script src="assets/js/parseTree.js"></script>
+    <script src="assets/js/traversals.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 /* Main Methods */
 // Parse the user entered string, and throw an error if expression is invalid
-function parsePreOrder(str) {
+function parseTree(str) {
     // Build Regex for Parsing
     // Regex for numbers, Regex for operators, Regex for whitespace
     var parser = new RegExp([/\d+(?:\.\d*)?|\.\d+/.source,[".", "(", ")"].concat(sNode.operands, bNode.operands).map(characterize).join("|"), /[a-zA-Z$_][a-zA-Z0-9$_]*/.source, /\S/.source].map(s => "("+ s +")").join("|"), "g");
@@ -8,14 +8,29 @@ function parsePreOrder(str) {
     // using String.replace as a forEach function
     str.replace(parser, function(tk, num, operand) {
         if(num) { tk = new numNode(num); }
-        else if(!operand) { throw new Error("unexpected token '"+tk+"'"); }
+        else if(!operand) {
+            var newHTML         = document.createElement('div');
+            newHTML.innerHTML   = '<div><p>ERROR! Please refresh the page and try again.</p></div>';
+            newHTML.setAttribute('class', 'errors');
+            document.body.appendChild (newHTML);
+            throw new Error("unexpected token '"+tk+"'");
+        }
         tks.push(tk);
     });
+
+    //console.log(parser);
+    //console.log(tks[1]);
 
     // Loop through the tokens and process each split at ()'s'
     for(var i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
     // Check for mismatching parentheses
-    if(~tks.indexOf("(") || ~tks.indexOf(")")) throw new Error("mismatching parentheses");
+    if(~tks.indexOf("(") || ~tks.indexOf(")")) {
+        var newHTML         = document.createElement('div');
+        newHTML.innerHTML   = '<div><p>ERROR! Please refresh the page and try again.</p></div>';
+        newHTML.setAttribute('class', 'errors');
+        document.body.appendChild (newHTML);
+        throw new Error("mismatching parentheses");
+    }
 
     return processSplit(tks); // Return the output of the nodes, after we splice then into a single node
 }
@@ -36,7 +51,7 @@ function processSplit(tks){
 }
 
 /* Utility Methods */
-// For looping through each operand [.()^*/+-]
+// Simple regex for looping through each operand [.()^*/+-]
 function characterize(str) {
     return String(str).replace(/[.*+?^=!:${}()|[\]\/\\]/g, '\\$&');
 }
