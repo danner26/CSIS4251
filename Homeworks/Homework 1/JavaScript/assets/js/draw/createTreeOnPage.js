@@ -4,15 +4,14 @@ function createTreeOnPage(inOrderArray) {
   var array_size = ((inOrderArray.length / 2) + 1) * 2;
   i = 1;
 
-  do {
-    i = i * 2
-  } while (i < array_size)
+  do { i = i * 2 } while (i < array_size)
   array_size = i
   for (i = 1; i <= array_size; i++) {
     if (!inOrderArray[i]) {
       inOrderArray[i] = "null"
     }
   }
+  console.log(inOrderArray);
   content += "<div align='center'><table border>"
   i = 2
   while (i <= array_size) {

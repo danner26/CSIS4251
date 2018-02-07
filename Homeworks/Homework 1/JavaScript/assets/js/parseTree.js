@@ -9,10 +9,10 @@ function parseTree(str) {
     str.replace(parser, function(tk, num, operand) {
         if(num) { tk = new numNode(num); }
         else if(!operand) {
-            var newHTML         = document.createElement('div');
-            newHTML.innerHTML   = '<div><p>ERROR! Please refresh the page and try again.</p></div>';
-            newHTML.setAttribute('class', 'errors');
-            document.body.appendChild (newHTML);
+            var newError = document.createElement('p');
+            newError.innerHTML = 'ERROR! Please try another input. ' + tk + ' is not a valid input.';
+            newError.setAttribute('class', 'error');
+            document.getElementById('errors').appendChild(newError);
             throw new Error("unexpected token '"+tk+"'");
         }
         tks.push(tk);
@@ -25,10 +25,10 @@ function parseTree(str) {
     for(var i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
     // Check for mismatching parentheses
     if(~tks.indexOf("(") || ~tks.indexOf(")")) {
-        var newHTML         = document.createElement('div');
-        newHTML.innerHTML   = '<div><p>ERROR! Please refresh the page and try again.</p></div>';
-        newHTML.setAttribute('class', 'errors');
-        document.body.appendChild (newHTML);
+        var newError = document.createElement('p');
+        newError.innerHTML = 'ERROR! Please try another input. ' + tk + ' is not a valid input.';
+        newError.setAttribute('class', 'error');
+        document.getElementById('errors').appendChild(newError);
         throw new Error("mismatching parentheses");
     }
 

@@ -2,20 +2,21 @@ function onStartClick() {
   stringToParse = document.getElementById('string').value.replace(/ /g, '');
   var tree = parseTree(stringToParse);
 
+  var nodes = document.getElementById('errors')
+  while (nodes.firstChild) {
+    nodes.removeChild(nodes.firstChild);
+  }
 
-
-  var preOrder = preOrderTraversal(tree);
-  var inOrder = inOrderTraversal(tree);
-  var postOrder = postOrderTraversal(tree);
+  var preOrder = preOrderTraversal(tree), inOrder = inOrderTraversal(tree), postOrder = postOrderTraversal(tree);
 
   console.log(preOrder);
   console.log(inOrder);
   console.log(postOrder);
   console.log(JSON.stringify(tree, null, 2));
 
-  document.getElementById('preorder').innerHTML = '<p><b>Pre-Order: </b> ' + preOrder.toString().replace(/,/g, ' ') + '</p>';
-  document.getElementById('inorder').innerHTML = '<p><b>In-Order: </b> ' + inOrder.toString().replace(/,/g, ' ') + '</p>';
-  document.getElementById('postorder').innerHTML = '<p><b>Post-Order: </b> ' + postOrder.toString().replace(/,/g, ' ') + '</p>';
+  document.getElementById('preorder').innerHTML = '<b>Pre-Order: </b> ' + preOrder.toString().replace(/,/g, ' ');
+  document.getElementById('inorder').innerHTML = '<b>In-Order: </b> ' + inOrder.toString().replace(/,/g, ' ');
+  document.getElementById('postorder').innerHTML = '<b>Post-Order: </b> ' + postOrder.toString().replace(/,/g, ' ');
 
   createTreeOnPage(tree);
 
