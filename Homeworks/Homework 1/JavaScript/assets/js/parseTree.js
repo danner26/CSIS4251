@@ -1,4 +1,16 @@
-/* Main Methods */
+/*
+* FILENAME :        main.js
+*
+* DESCRIPTION :
+*       Script that parses the user input, and adds the proper nodes to the tree
+*
+* NOTES :
+*       I got lazy and didnt want to rewrite all of the code to make the tree diagram work, so this will add the data to 2 seperate trees
+*       If I had more time I would have went through the process of converting everything into one tree to be sorted through. This uses the
+*       addToTree() and return processSplit() to return values to the 2 trees - see tree.js and draw/createTreeOnPage.js
+*
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #1 - CSIS4251
+*/
 // Parse the user entered string, and throw an error if expression is invalid
 function parseTree(str) {
     // Build Regex for Parsing
@@ -9,11 +21,11 @@ function parseTree(str) {
     str.replace(parser, function(tk, num, operand) {
         if(num) { tk = new numNode(num); }
         else if(!operand) {
-            var newError = document.createElement('p');
-            newError.innerHTML = 'ERROR! Please try another input. ' + tk + ' is not a valid input.';
-            newError.setAttribute('class', 'error');
-            document.getElementById('errors').appendChild(newError);
-            throw new Error("unexpected token '"+tk+"'");
+          var newError = document.createElement('p'); // create an "invisible" (empty) element
+          newError.innerHTML = 'ERROR! Please try another input. <b style="weight: bolder;">' + tk + '</b> is not a valid input.'; // add the text and error character to the new element
+          newError.setAttribute('class', 'error'); // add the class "error" to our new element
+          document.getElementById('errors').appendChild(newError); // append the element to our div that contains all other errors
+          throw new Error("unexpected token '"+ tk +"'"); // throw an exception to end the script process and log it to the console
         }
         tks.push(tk);
     });
@@ -25,11 +37,17 @@ function parseTree(str) {
     for(var i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
     // Check for mismatching parentheses
     if(~tks.indexOf("(") || ~tks.indexOf(")")) {
-        var newError = document.createElement('p');
-        newError.innerHTML = 'ERROR! Please try another input. ' + tk + ' is not a valid input.';
-        newError.setAttribute('class', 'error');
-        document.getElementById('errors').appendChild(newError);
-        throw new Error("mismatching parentheses");
+        var newError = document.createElement('p'); // create an "invisible" (empty) element
+        newError.innerHTML = 'ERROR! Please try another input. <b style="weight: bolder;">' + tk + '</b> is not a valid input in this place.'; // add the text and error character to the new element
+        newError.setAttribute('class', 'error'); // add the class "error" to our new element
+        document.getElementById('errors').appendChild(newError); // append the element to our div that contains all other errors
+        throw new Error("mismatching parentheses"); // throw an exception to end the script process and log it to the console
+    }
+
+    // I got lazy and decided to structre the tree another way for the display, but I did not feel like rewritting the code I already wrote for the traversals.. so here we are
+    for (var i = 0; i < tks.length; i++) {
+        if (tks[i].value) addToTree(tks[i].value) // Add each "value" to the new tree (operands and values are different in this old tree) :D
+        else addToTree(tks[i]) // Add each operand to the new tree!
     }
 
     return processSplit(tks); // Return the output of the nodes, after we splice then into a single node
@@ -46,7 +64,6 @@ function processSplit(tks){
     bNode.operands.forEach(tk => {
         for(var i=1; (i=tks.indexOf(tk, i-1)) > -1;) tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); // Splice each bNode, and create new bNode's where applicable
     });
-
     return tks[0]; // Return spliced results as a single token
 }
 

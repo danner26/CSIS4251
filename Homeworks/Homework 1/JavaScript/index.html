@@ -8,14 +8,19 @@
 
   <body>
     <main role="main" class="container" id="mainSection">
-      <h1>Expression Tree</h1>
+      <div class="page-header">
+        <h1>Expression Tree</h1>
+      </div>
       <hr/>
-      <form>
+      <h4 style="text-align: center;">Input Your Expression</h4>
+      <form style="text-align: center;">
         <input type="text" id="string" name="string" placeholder="Input here.."><input id="clickMe" type="button" value="Convert!" onclick="onStartClick();" />
       </form>
       <hr />
-      <div id="newTable"></div>
+      <h4 style="text-align: center;">Expression Visualization</h4>
+      <div id="treeVisualization"></div>
       <hr />
+      <h4 style="text-align: center;">Expression Traversals</h4>
       <div class="centered">
         <p id="preorder"><b>Pre-Order: </b></p>
         <p id="inorder"><b>In-Order: </b></p>
