@@ -6,11 +6,13 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="../assets/css/main_site.css" />
   <link rel="stylesheet" type="text/css" href="../assets/css/album.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -31,7 +33,59 @@
     </div>
     <hr/>
 
-    
+
+    <form class="mem_allocation">
+      <fieldset>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="mem_type">
+              <p>Type of Memory</p>
+              <label><input type="radio" name="mem_type" id="mem_dynamic" value="mem_dynamic" checked> Dynamic</label>
+              <label><input type="radio" name="mem_type" id="mem_fixed" value="mem_fixed"> Fixed</label>
+            </div>
+            <div class="mem_partitions">
+              <label for="mem_partitions">Number of Partitions</label>
+              <input type="text" name="mem_partitions" id="mem_partitions" value="1" required>
+              <i class="fas fa-plus-circle fa-2x increase" style="margin-left: 5px;"></i>
+              <i class="fas fa-minus-circle fa-2x decrease"></i>
+            </div>
+            <div class="mem_partition_sizes">
+              <label for="mem_partition_sizes">List Partition Sizes</label>
+              <textarea class="form-control textarea" id="partitionSizes" type="number" required></textarea>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="mem_algorithm">
+              <p>Type of Memory</p>
+              <label><input type="radio" name="mem_algorithm" id="alg_best" value="alg_" checked> Best Fit</label>
+              <label><input type="radio" name="mem_algorithm" id="alg_first" value="alg_"> First Fit</label>
+              <label><input type="radio" name="mem_algorithm" id="alg_next" value="alg_"> Next Fit</label>
+              <label><input type="radio" name="mem_algorithm" id="alg_worst" value="alg_"> Worst Fit</label>
+            </div>
+            <div class="mem_jobs">
+              <label for="name">Number of Jobs</label>
+              <input type="text" name="mem_jobs" id="mem_jobs" value="1" required>
+              <i class="fas fa-plus-circle fa-2x increase" style="margin-left: 5px;"></i>
+              <i class="fas fa-minus-circle fa-2x decrease"></i>
+            </div>
+            <div class="mem_job_sizes">
+              <label for="mem_job_sizes">List Job Sizes</label>
+              <textarea class="form-control textarea" id="jobSizes" type="number" required></textarea>
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%; text-align: center;">
+          <button class="btn btn-primary" id="evaluate" type="submit">Submit</button>
+          <button class="btn btn-danger" type="submit">Reset</button>
+        </div>
+      </fieldset>
+    </form>
+    <br />
+    <br />
+    <div id="output">
+
+    </div>
   </main>
 
   <footer class="footer">
@@ -45,6 +99,9 @@
   <script type="text/javascript" src="../assets/js/vendor/holder.min.js"></script>
   <script type="text/javascript" src="../assets/js/vendor/popper.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/schemes/fixed.js"></script>
+  <script type="text/javascript" src="assets/js/schemes/dynamic.js"></script>
 </body>
 
 </html>

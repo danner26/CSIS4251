@@ -1,47 +1,90 @@
-/*
-* FILENAME :        main.js
+/* * FILENAME :        main.js
 *
 * DESCRIPTION :
 *       Main part of the script dedicated to running all of the combined scripts after a user clicks the Convert! button
 *
 * NOTES :
 *
-* AUTHOR :    Daniel W. Anner - Z00231757 - Program #1 - CSIS4251
-*/
-function onStartClick() {
-  try { // try to clear the canvas before making a new one to clear past results
-    var canvas = document.getElementById('treeVisualization'); // Get the div element that the node is contained in and save it to a variable
-    while (canvas.firstChild) canvas.removeChild(canvas.firstChild); // Check if there are any elements under the errors div, if so remove all of them until none are left
-    createCanvas(); // create a new canvas
-  } catch (e) { // catch the error
-    console.log("no canvas to clear"); // log to the console that there is no canvas
-    createCanvas(); // create a new canvas
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #1 - CSIS4251 */
+$("#evaluate").on("click", function(e) {
+  e.preventDefault();
+
+  // Get the job sizes and parse them into an array
+  var jobs = $('#jobSizes').val().split(','), partitions = $('#partitionSizes').val().split(',');
+
+  var algs = document.getElementsByName('mem_algorithm');
+  for (i = 0; i < algs.length; i++) {
+    if (algs[i].checked) { var checked = algs[i].id; break; }
   }
 
-  // Start by parsing the input
-  stringToParse = document.getElementById('string').value.replace(/ /g, ''); // Remove ALL whitespace from the input string
-  var tree = parseTree(stringToParse); // Parse the tree and save its structured return in a variable for later use
+  if (document.getElementsByName('mem_type')[0].checked) {
+    // Dynamic partitions is checked
+    determinAlgorithm('dynamic', checked, jobs, partitions);
+  } else {
+    // Fixed partitions is checked
+    determinAlgorithm('fixed', checked, jobs, partitions);
+  }
+});
 
-  // If there were any errors, we need to remove them before displaying the strings proper content
-  var errorElement = document.getElementById('errors'); // Get the div element that the node is contained in and save it to a variable
-  while (errorElement.firstChild) errorElement.removeChild(errorElement.firstChild); // Check if there are any elements under the errors div, if so remove all of them until none are left
-
-  var preOrder = preOrderTraversal(tree), inOrder = inOrderTraversal(tree), postOrder = postOrderTraversal(tree); // Process the expression in all traversals and save their returns as a variable
-
-  //console.log(preOrder); // Log the pre-order traversal to the console
-  //console.log(inOrder); // Log the in-order traversal to the console
-  //console.log(postOrder); // Log the post-order traversal to the console
-  //console.log(JSON.stringify(tree, null, 2)); // Log the tree to the console
-
-  // Put the traversal into the webpage for the user to see
-  document.getElementById('preorder').innerHTML = '<b>Pre-Order: </b> ' + preOrder.toString().replace(/,/g, ' ');
-  document.getElementById('inorder').innerHTML = '<b>In-Order: </b> ' + inOrder.toString().replace(/,/g, ' ');
-  document.getElementById('postorder').innerHTML = '<b>Post-Order: </b> ' + postOrder.toString().replace(/,/g, ' ');
-
-  // Cleanup - clear all arrays and change the value of tree to nothing as well as set the btree root to null
-  preOrder.length = 0;
-  inOrder.length = 0;
-  postOrder.length = 0;
-  tree = parseTree(" ");
-  etree.root = null;
+function determinAlgorithm(partitionType, algorithmType, jobs, partitions) {
+  console.log(algorithmType);
+  switch (partitionType + "|" + algorithmType) {
+    case "dynamic|alg_best":
+      return dynamicBestFit(partitions, jobs);
+    case "dynamic|alg_first":
+      return dynamicFirstFit(partitions, jobs);
+    case "dynamic|alg_next":
+      return dynamicNextFit(partitions, jobs);
+    case "dynamic|alg_worst":
+      return dynamicWorstFit(partitions, jobs);
+    case "fixed|alg_best":
+      return fixedBestFit(partitions, jobs);
+    case "fixed|alg_first":
+      return fixedFirstFit(partitions, jobs);
+    case "fixed|alg_next":
+      return fixedNextFit(partitions, jobs);
+    case "fixed|alg_worst":
+      return fixedWorstFit(partitions, jobs);
+    default:
+      console.log("This shouldn't happen!");
+      return;
+  }
 }
+
+/* On start these functions are loaded */
+$(function() {
+  $(".increase").on("click", function() {
+    var oldValue = $(this).parent().find("input").val();
+
+    if (oldValue > 1) {
+      var newVal = parseFloat(oldValue) + 1;
+    } else {
+      newVal = 1;
+    }
+    $(this).parent().find("input").val(newVal);
+  });
+  $(".decrease").on("click", function() {
+    var oldValue = $(this).parent().find("input").val();
+
+    if (oldValue < 1) {
+      var newVal = parseFloat(oldValue) - 1;
+    } else {
+      newVal = 1;
+    }
+    $(this).parent().find("input").val(newVal);
+  });
+
+  $('textarea').keypress(function(e) {
+    var a = [],
+      k = e.which;
+
+    for (i = 48; i < 58; i++)
+      a.push(i);
+
+    if (!(a.indexOf(k) >= 0) && !(k == 32) && !(k == 44))
+      e.preventDefault();
+    else if (k == 32) {
+      console.log(e);
+    }
+  });
+});
