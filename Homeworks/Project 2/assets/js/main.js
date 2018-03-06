@@ -42,24 +42,23 @@ $("#evaluate").on("click", function(e) {
 
 function determinAlgorithm(partitionType, algorithmType, partitions, jobs) {
   console.log(algorithmType);
-  var Fixed = new Fixed();
   switch (partitionType + "|" + algorithmType) {
     case "dynamic|alg_best":
-      return dynamicBestFit(partitions, jobs);
+      return d_bestFit(partitions, jobs);
     case "dynamic|alg_first":
-      return dynamicFirstFit(partitions, jobs);
+      return d_firstFit(partitions, jobs);
     case "dynamic|alg_next":
-      return dynamicNextFit(partitions, jobs);
+      return d_nextFit(partitions, jobs);
     case "dynamic|alg_worst":
-      return dynamicWorstFit(partitions, jobs);
+      return d_worstFit(partitions, jobs);
     case "fixed|alg_best":
-      return Fixed.bestFit(partitions, jobs);
+      return f_bestFit(partitions, jobs);
     case "fixed|alg_first":
-      return fixedFirstFit(partitions, jobs);
+      return f_firstFit(partitions, jobs);
     case "fixed|alg_next":
-      return fixedNextFit(partitions, jobs);
+      return f_nextFit(partitions, jobs);
     case "fixed|alg_worst":
-      return fixedWorstFit(partitions, jobs);
+      return f_worstFit(partitions, jobs);
     default:
       console.log("This shouldn't happen!");
       return;

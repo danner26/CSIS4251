@@ -1,10 +1,4 @@
-class Fixed {
-  constructor() {
-    console.log("created");
-  }
-}
-
-Fixed.prototype.bestFit = function(partitions, jobs) {
+function f_bestFit(partitions, jobs) {
   var outputPage = $("#output"); $('<div style="width: 100%; text-align: centered;"><h4>Best Fit Scheme</h4></div><br />').appendTo(outputPage);
   var allPartitions = [], busy = [];
   var tempFragmentation = 0, fragmentation = 0, freePosition = 0;
@@ -45,7 +39,7 @@ Fixed.prototype.bestFit = function(partitions, jobs) {
       if (partitions[r] == 0) {
         $('<td>' + allPartitions[r] + '</td>').appendTo(tr);
         $('<td>' + memoryAddress + '</td>').appendTo(tr);
-        $('<td>Job ' + r + '</td>').appendTo(tr);
+        $('<td>Job ' + jobOrder[r] + '</td>').appendTo(tr);
         $('<td>Busy</td>').appendTo(tr);
       } else {
         $('<td>' + partitions[r] + '</td>').appendTo(tr);
