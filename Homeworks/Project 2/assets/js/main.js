@@ -68,27 +68,6 @@ function determinAlgorithm(partitionType, algorithmType, partitions, jobs) {
 
 /* On start these functions are loaded */
 $(function() {
-  $(".increase").on("click", function() {
-    var oldValue = $(this).parent().find("input").val();
-
-    if (oldValue > 1) {
-      var newVal = parseFloat(oldValue) + 1;
-    } else {
-      newVal = 1;
-    }
-    $(this).parent().find("input").val(newVal);
-  });
-  $(".decrease").on("click", function() {
-    var oldValue = $(this).parent().find("input").val();
-
-    if (oldValue < 1) {
-      var newVal = parseFloat(oldValue) - 1;
-    } else {
-      newVal = 1;
-    }
-    $(this).parent().find("input").val(newVal);
-  });
-
   $('textarea').keypress(function(e) {
     var a = [],
       k = e.which;
@@ -102,3 +81,28 @@ $(function() {
     $("textarea#jobSizes").val($("textarea#jobSizes").val().split(' ').join(','));
   });
 });
+
+function loadListeners() {
+  $("#increase").on("click", function() {
+    console.log('increase');
+    var oldValue = $(this).parent().find("input").val();
+
+    if (oldValue > 1) {
+      var newVal = parseFloat(oldValue) + 1;
+    } else {
+      newVal = 1;
+    }
+    $(this).parent().find("input").val(newVal);
+  });
+  $("#decrease").on("click", function() {
+    console.log('decrease');
+    var oldValue = $(this).parent().find("input").val();
+
+    if (oldValue < 1) {
+      var newVal = parseFloat(oldValue) - 1;
+    } else {
+      newVal = 1;
+    }
+    $(this).parent().find("input").val(newVal);
+  });
+}
