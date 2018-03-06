@@ -41,7 +41,6 @@ $("#evaluate").on("click", function(e) {
 });
 
 function determinAlgorithm(partitionType, algorithmType, partitions, jobs) {
-  console.log(algorithmType);
   switch (partitionType + "|" + algorithmType) {
     case "dynamic|alg_best":
       return d_bestFit(partitions, jobs);
