@@ -45,7 +45,7 @@ function dynamicBestFit(parts, jobs) {
         tr.appendTo(table);
       }
     }
-    table.appendTo('body');;
+    table.appendTo('body');
   }
   return;
 }

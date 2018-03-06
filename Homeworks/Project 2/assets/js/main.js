@@ -12,22 +12,37 @@ $("#evaluate").on("click", function(e) {
   // Get the job sizes and parse them into an array
   var jobs = $('#jobSizes').val().split(','), partitions = $('#partitionSizes').val().split(',');
 
+  // Parse both arrays string values into int's
+  var temp = [];
+  for (i = 0; i < jobs.length; i++) {
+    temp.push(parseInt(jobs[i]));
+  }
+  jobs = temp;
+  temp = [];
+  for (i = 0; i < partitions.length; i++) {
+    temp.push(parseInt(partitions[i]));
+  }
+  partitions = temp;
+
   var algs = document.getElementsByName('mem_algorithm');
   for (i = 0; i < algs.length; i++) {
     if (algs[i].checked) { var checked = algs[i].id; break; }
   }
 
+  $("#output").html('');
+
   if (document.getElementsByName('mem_type')[0].checked) {
     // Dynamic partitions is checked
-    determinAlgorithm('dynamic', checked, jobs, partitions);
+    determinAlgorithm('dynamic', checked, partitions, jobs);
   } else {
     // Fixed partitions is checked
-    determinAlgorithm('fixed', checked, jobs, partitions);
+    determinAlgorithm('fixed', checked, partitions, jobs);
   }
 });
 
-function determinAlgorithm(partitionType, algorithmType, jobs, partitions) {
+function determinAlgorithm(partitionType, algorithmType, partitions, jobs) {
   console.log(algorithmType);
+  var Fixed = new Fixed();
   switch (partitionType + "|" + algorithmType) {
     case "dynamic|alg_best":
       return dynamicBestFit(partitions, jobs);
@@ -38,7 +53,7 @@ function determinAlgorithm(partitionType, algorithmType, jobs, partitions) {
     case "dynamic|alg_worst":
       return dynamicWorstFit(partitions, jobs);
     case "fixed|alg_best":
-      return fixedBestFit(partitions, jobs);
+      return Fixed.bestFit(partitions, jobs);
     case "fixed|alg_first":
       return fixedFirstFit(partitions, jobs);
     case "fixed|alg_next":
