@@ -37,6 +37,7 @@ form div {
 .increase {
   margin-left: 4px;
   border-color: #fff;
+  background-color: #fff;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
@@ -57,6 +58,7 @@ form div {
 }
 .decrease {
   border-color: #fff;
+  background-color: #fff;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
@@ -77,9 +79,14 @@ form div {
   border: none;
 }
 
+.checkboxes {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
+}
 .checkboxes label {
-  display: block;
-  float: left;
+  display: inline-block;
+  float: right;
   padding-right: 10px;
   white-space: nowrap;
 }
@@ -88,4 +95,14 @@ form div {
 }
 .checkboxes label span {
   vertical-align: middle;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }

@@ -61,7 +61,8 @@ function determinAlgorithm(partitionType, algorithmType, partitions, jobs) {
     case "fixed|alg_worst":
       return f_worstFit(partitions, jobs);
     default:
-      console.log("This shouldn't happen!");
+      console.log("This shouldn't happen! alerting the user");
+      alert("Please ensure you select a Type of Memory AND a Type of Scheme");
       return;
   }
 }
@@ -101,3 +102,26 @@ document.addEventListener('DOMContentLoaded', function () {
     $("textarea#jobSizes").val($("textarea#jobSizes").val().split(' ').join(','));
   });
 });
+
+function changeDefaultText(element) {
+  if (!(document.getElementById('toChangeText').checked)) {
+    switch (element) {
+      case "alg_bestFit":
+        $("textarea#partitionSizes").val("400,200,300,100,500");
+        $("textarea#jobSizes").val("380,290,200,600,200");
+        return;
+      case "alg_firstFit":
+        $("textarea#partitionSizes").val("400,200,300,100,500");
+        $("textarea#jobSizes").val("380,290,200,600,200");
+        return;
+      case "alg_nextFit":
+        $("textarea#partitionSizes").val("400,200,300,100,500");
+        $("textarea#jobSizes").val("380,290,200,600,200");
+        return;
+      case "alg_worstFit":
+        $("textarea#partitionSizes").val("400,200,300,100,500");
+        $("textarea#jobSizes").val("380,290,200,600,200");
+        return;
+    }
+  }
+}
