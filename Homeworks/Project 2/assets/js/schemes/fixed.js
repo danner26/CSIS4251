@@ -54,6 +54,7 @@ function f_bestFit(partitions, jobs) {
       tr.appendTo(table);
     }
     table.appendTo(outputPage); $('<br /> <p>Total Fragmentation: ' + fragmentation + '</p><br />').appendTo(outputPage);
+    $('<hr><br />').appendTo(outputPage);
   }
   return;
 }
@@ -106,6 +107,7 @@ function f_firstFit(partitions, jobs) {
     }
     table.appendTo(outputPage);
     $('<br /> <p>Total Fragmentation: ' + fragmentation + '</p><br />').appendTo(outputPage);
+    $('<hr><br />').appendTo(outputPage);
   }
   return;
 }
@@ -170,6 +172,7 @@ function f_nextFit(partitions, jobs) {
   }
   table.appendTo(outputPage);
   $('<br /> <p>Total Fragmentation: ' + fragmentation + '</p><br />').appendTo(outputPage);
+  $('<hr><br />').appendTo(outputPage);
   return;
 }
 
@@ -194,7 +197,7 @@ function f_worstFit(partitions, jobs) {
 			if (matchFound == true) {
 				fragmentation = fragmentation + (partitions[freePos] - jobs[i]);
 				busy.push(partitions[freePos], i);
-				$('<p>Job ' + i + ' arrives.</p><br />').appendTo(outputPage);
+				$('<p>Job ' + i + ' loads.</p><br />').appendTo(outputPage);
 				partitions[freePos] = 0;
 			}
 			matchFound = false;
@@ -229,5 +232,6 @@ function f_worstFit(partitions, jobs) {
 		}
     table.appendTo(outputPage);
     $('<br /> <p>Total Fragmentation: ' + fragmentation + '</p><br />').appendTo(outputPage);
+    $('<hr><br />').appendTo(outputPage);
     return;
 }
