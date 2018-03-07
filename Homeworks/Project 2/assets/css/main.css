@@ -19,6 +19,90 @@ form div {
   cursor: pointer;
   float: left;
 }
+.bold {
+  font-weight: bold;
+}
+.title {
+  margin-bottom: 4px;
+}
+.title p {
+  margin-bottom: 4px;
+}
+.internal_padding {
+  padding-left: 2px;
+}
+.internal_padding label {
+  padding-top: 2px;
+}
+.increase {
+  margin-left: 4px;
+  border-color: #fff;
+  background-color: #fff;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+}
+.increase:focus {
+  outline: 0;
+  border-style: outset;
+  border: none;
+}
+.increase:active {
+  outline: 0;
+  border-style: outset;
+  border: none;
+}
 .decrease {
-  background-position: 0 -29px;
+  border-color: #fff;
+  background-color: #fff;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+  padding-left: 0px;
+}
+.decrease:focus {
+  outline: 0;
+  border-style: outset;
+  border: none;
+}
+.decrease:active {
+  outline: 0;
+  border-style: outset;
+  border: none;
+}
+
+.checkboxes {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.checkboxes label {
+  display: inline-block;
+  float: right;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+  vertical-align: middle;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
