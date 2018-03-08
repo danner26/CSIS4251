@@ -58,7 +58,6 @@ function f_bestFit(partitions, jobs) {
     table.appendTo(outputPage); $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
     $("<hr><br />").appendTo(outputPage);
   }
-  return;
 }
 
 function f_firstFit(partitions, jobs) {
@@ -111,7 +110,6 @@ function f_firstFit(partitions, jobs) {
     $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
     $("<hr><br />").appendTo(outputPage);
   }
-  return;
 }
 
 function f_nextFit(partitions, jobs) {
@@ -175,7 +173,6 @@ function f_nextFit(partitions, jobs) {
   table.appendTo(outputPage);
   $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
   $("<hr><br />").appendTo(outputPage);
-  return;
 }
 
 function f_worstFit(partitions, jobs) {
@@ -235,5 +232,4 @@ function f_worstFit(partitions, jobs) {
     table.appendTo(outputPage);
     $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
     $("<hr><br />").appendTo(outputPage);
-    return;
 }
