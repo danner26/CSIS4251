@@ -31,10 +31,10 @@ function d_bestFit(partitions, jobs) {
     for (r = 0; r < partitions.length; r++) {
       memoryAddress += allPartitions[r];
       var tr = $("<tr>");
-      if (partitions[r] == 0) {
-        if (busy.length != 2) {
-          for (var l = 0; l < busy.length; l += 2) {
-            if (allPartitions[r] == busy[l]) {
+      if (partitions[r] === 0) {
+        if (busy.length !== 2) {
+          for (l = 0; l < busy.length; l += 2) {
+            if (allPartitions[r] === busy[l]) {
               $("<td>" + allPartitions[r] + "</td>").appendTo(tr);
               $("<td>" + memoryAddress + "</td>").appendTo(tr);
               $("<td>Job " + busy[(l + 1)] + "</td>").appendTo(tr);
@@ -58,17 +58,16 @@ function d_bestFit(partitions, jobs) {
     table.appendTo(outputPage); $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
     $("<hr><br />").appendTo(outputPage);
   }
-  return;
 }
 
 function d_firstFit(partitions, jobs) {
   var outputPage = $("#output"); $("<div style='width: 100%; text-align: centered;'><h4>First Fit Scheme</h4></div><br />").appendTo(outputPage);
   var allPartitions = [], busy = [];
   var fragmentation = 0;
-  for (var i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
+  for (i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
 
-  for (var i = 0; i < jobs.length; i++) {
-    for (var j = 0; j < partitions.length; j++) {
+  for (i = 0; i < jobs.length; i++) {
+    for (j = 0; j < partitions.length; j++) {
       if (partitions[j] >= jobs[i]) {
         $("<p>Job " + i + " loads.</p><br />").appendTo(outputPage);
         var table = $("<table class='table'><thead><tr><th scope='col'>Partition Size</th> \
@@ -77,13 +76,13 @@ function d_firstFit(partitions, jobs) {
         fragmentation += (partitions[j] - jobs[i]);
         busy.push(partitions[j], i);
         partitions[j] = 0, memoryAddress = 0;
-        for (var k = 0; k < partitions.length; k++) {
+        for (k = 0; k < partitions.length; k++) {
           var tr = $("<tr>");
           memoryAddress += allPartitions[k];
-          if (partitions[k] == 0) {
-            if (busy.length != 2) {
-              for (var l = 0; l < busy.length; l += 2) {
-                if (allPartitions[k] == busy[l]) {
+          if (partitions[k] === 0) {
+            if (busy.length !== 2) {
+              for (l = 0; l < busy.length; l += 2) {
+                if (allPartitions[k] === busy[l]) {
                   $("<td>" + allPartitions[k] + "</td>").appendTo(tr);
                   $("<td>" + memoryAddress + "</td>").appendTo(tr);
                   $("<td>Job " + busy[(l + 1)] + "</td>").appendTo(tr);
@@ -111,7 +110,6 @@ function d_firstFit(partitions, jobs) {
     $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
     $("<hr><br />").appendTo(outputPage);
   }
-  return;
 }
 
 function d_nextFit(partitions, jobs) {
@@ -120,10 +118,10 @@ function d_nextFit(partitions, jobs) {
     <th scope='col'>Memory Address</th><th scope='col'>Access</th><th scope='col'>Partition Status</th></tr></thead><tbody>");
   var allPartitions = [], busy = [];
   var fragmentation = 0, position = 0, zPosition = 0;
-  for (var i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
+  for (i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
 
-  for (var i = 0; i < jobs.length; i++) {
-    for (var j = position; j < partitions.length; j++) {
+  for (i = 0; i < jobs.length; i++) {
+    for (j = position; j < partitions.length; j++) {
       zPosition = j;
       if (partitions[j] >= jobs[i]) {
         fragmentation += (partitions[j] - jobs[i]);
@@ -133,8 +131,8 @@ function d_nextFit(partitions, jobs) {
         break;
       }
     }
-    if (position == partitions.length) {
-      for (var k = 0; k < zPosition; k++) {
+    if (position === partitions.length) {
+      for (k = 0; k < zPosition; k++) {
         fragmentation += (partitions[k] - jobs[i]);
         busy.push(partitions[k], i);
         $("<p>Job " + i + " arrives.</p><br />").appendTo(outputPage);
@@ -145,13 +143,13 @@ function d_nextFit(partitions, jobs) {
   }
 
   var memoryAddress = 0;
-  for (var i = 0; i < partitions.length; i++) {
+  for (i = 0; i < partitions.length; i++) {
     memoryAddress += allPartitions[i];
     var tr = $("<tr>");
-    if (partitions[i] == 0) {
-      if (busy.length != 2) {
-        for (var l = 0; l < busy.length; l += 2) {
-          if (allPartitions[i] == busy[l]) {
+    if (partitions[i] === 0) {
+      if (busy.length !== 2) {
+        for (l = 0; l < busy.length; l += 2) {
+          if (allPartitions[i] === busy[l]) {
             $("<td>" + allPartitions[i] + "</td>").appendTo(tr);
             $("<td>" + memoryAddress + "</td>").appendTo(tr);
             $("<td>Job " + busy[(l + 1)] + "</td>").appendTo(tr);
@@ -175,7 +173,6 @@ function d_nextFit(partitions, jobs) {
   table.appendTo(outputPage);
   $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
   $("<hr><br />").appendTo(outputPage);
-  return;
 }
 
 function d_worstFit(partitions, jobs) {
@@ -185,10 +182,10 @@ function d_worstFit(partitions, jobs) {
 		var allPartitions = [], busy = [];
 		var tempFrag = 0, fragmentation = 0, freePos = 0;
     var matchFound = false;
-		for (var i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
+		for (i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
 
-		for (var i = 0; i < jobs.length; i ++) {
-			for (var z = 0; z < partitions.length; z++) {
+		for (i = 0; i < jobs.length; i ++) {
+			for (z = 0; z < partitions.length; z++) {
 				if (partitions[z] >= jobs[i]) {
 					if (tempFrag <= (partitions[z] - jobs[i])) {
 						freePos = z;
@@ -196,7 +193,7 @@ function d_worstFit(partitions, jobs) {
 					}
 				}
 			}
-			if (matchFound == true) {
+			if (matchFound === true) {
 				fragmentation = fragmentation + (partitions[freePos] - jobs[i]);
 				busy.push(partitions[freePos], i);
 				$("<p>Job " + i + " loads.</p><br />").appendTo(outputPage);
@@ -205,13 +202,13 @@ function d_worstFit(partitions, jobs) {
 			matchFound = false;
 		}
 		var memoryAddress = 0;
-		for (var i = 0; i < partitions.length; i++) {
+		for (i = 0; i < partitions.length; i++) {
       var tr = $("<tr>");
 			memoryAddress = memoryAddress + allPartitions[i];
-      if (partitions[i] == 0) {
-        if (busy.length != 2) {
-          for (var l = 0; l < busy.length; l += 2) {
-            if (allPartitions[i] == busy[l]) {
+      if (partitions[i] === 0) {
+        if (busy.length !== 2) {
+          for (l = 0; l < busy.length; l += 2) {
+            if (allPartitions[i] === busy[l]) {
               $("<td>" + allPartitions[i] + "</td>").appendTo(tr);
               $("<td>" + memoryAddress + "</td>").appendTo(tr);
               $("<td>Job " + busy[(l + 1)] + "</td>").appendTo(tr);
@@ -235,5 +232,4 @@ function d_worstFit(partitions, jobs) {
     table.appendTo(outputPage);
     $("<br /> <p>Total Fragmentation: " + fragmentation + "</p><br />").appendTo(outputPage);
     $("<hr><br />").appendTo(outputPage);
-    return;
 }
