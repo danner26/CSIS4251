@@ -12,16 +12,16 @@ $("#evaluate").on("click", function(e) {
   // Acquire the job sizes and parse them into an array
   $("textarea#partitionSizes").val($("textarea#partitionSizes").val().split(' ').join(''));
   $("textarea#jobSizes").val($("textarea#jobSizes").val().split(' ').join(''));
-  var jobs = $('#jobSizes').val().split(','), partitions = $('#partitionSizes').val().split(',');
+  var jobs = $("#jobSizes").val().split(","), partitions = $("#partitionSizes").val().split(",");
 
   // Parse both arrays string values into int's
   var temp = [];
-  for (var i = 0; i < jobs.length; i++) {
+  for (i = 0; i < jobs.length; i++) {
     if (jobs[i] != "") temp.push(parseInt(jobs[i]));
   }
   jobs = temp;
   temp = [];
-  for (var i = 0; i < partitions.length; i++) {
+  for (i = 0; i < partitions.length; i++) {
     if (partitions[i] != "") temp.push(parseInt(partitions[i]));
   }
   partitions = temp;
