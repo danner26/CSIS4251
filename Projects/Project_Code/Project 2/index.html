@@ -111,6 +111,34 @@
   <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript">
+    // Basic function to load examples on radio button selection
+    function changeDefaultText(element) {
+      if (!(document.getElementById('toChangeText').checked)) {
+        switch (element) {
+          case "alg_bestFit":
+            $("textarea#partitionSizes").val("400,200,300,100,500");
+            $("textarea#jobSizes").val("380,290,200,600,200");
+            break;
+          case "alg_firstFit":
+            $("textarea#partitionSizes").val("400,200,300,100,500");
+            $("textarea#jobSizes").val("150,300,350,100,600");
+            break;
+          case "alg_nextFit":
+            $("textarea#partitionSizes").val("400,200,300,100,500");
+            $("textarea#jobSizes").val("380,290,200,600,200");
+            break;
+          case "alg_worstFit":
+            $("textarea#partitionSizes").val("400,200,300,100,500");
+            $("textarea#jobSizes").val("380,290,200,600,200");
+            break;
+          default:
+            console.log("Should not occur - Wrong radio button?");
+            break;
+        }
+      }
+    }
+  </script>
   <script type="text/javascript" src="assets/js/schemes/fixed.js"></script>
   <script type="text/javascript" src="assets/js/schemes/dynamic.js"></script>
 </body>
