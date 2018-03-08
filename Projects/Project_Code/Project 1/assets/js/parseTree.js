@@ -34,7 +34,7 @@ function parseTree(str) {
     //console.log(tks[1]);
 
     // Loop through the tokens and process each split at ()'s'
-    for(var i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
+    for(i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
     // Check for mismatching parentheses
     if(~tks.indexOf("(") || ~tks.indexOf(")")) {
         var newError = document.createElement('p'); // create an "invisible" (empty) element
@@ -45,7 +45,7 @@ function parseTree(str) {
     }
 
     // I got lazy and decided to structre the tree another way for the display, but I did not feel like rewritting the code I already wrote for the traversals.. so here we are
-    for (var i = 0; i < tks.length; i++) {
+    for (i = 0; i < tks.length; i++) {
         if (tks[i].value) addToTree(tks[i].value) // Add each "value" to the new tree (operands and values are different in this old tree) :D
         else addToTree(tks[i]) // Add each operand to the new tree!
     }
@@ -57,12 +57,12 @@ function parseTree(str) {
 function processSplit(tks){
     // Sort through each single node
     sNode.operands.forEach(tk => {
-        for(var i=-i; (i=tks.indexOf(tk, i+1)) > -1;) tks.splice(i, 2, new sNode(tk, tks[i+1])); // Splice each sNode, and create new sNode's where applicable
+        for(i=-i; (i=tks.indexOf(tk, i+1)) > -1;) tks.splice(i, 2, new sNode(tk, tks[i+1])); // Splice each sNode, and create new sNode's where applicable
     })
 
     // Sort through each binary node
     bNode.operands.forEach(tk => {
-        for(var i=1; (i=tks.indexOf(tk, i-1)) > -1;) tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); // Splice each bNode, and create new bNode's where applicable
+        for(i=1; (i=tks.indexOf(tk, i-1)) > -1;) tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); // Splice each bNode, and create new bNode's where applicable
     });
     return tks[0]; // Return spliced results as a single token
 }
@@ -70,5 +70,5 @@ function processSplit(tks){
 /* Utility Methods */
 // Simple regex for looping through each operand [.()^*/+-]
 function characterize(str) {
-    return String(str).replace(/[.*+?^=!:${}()|[\]\/\\]/g, '\\$&');
+    return String(str).replace(/[.*+?^=!:${}()|[\]\\]/g, '\\$&');
 }
