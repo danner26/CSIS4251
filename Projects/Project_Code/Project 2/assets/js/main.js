@@ -1,11 +1,11 @@
 /* * FILENAME :        main.js
 *
 * DESCRIPTION :
-*       Main part of the script dedicated to running all of the combined scripts after a user clicks the Convert! button
+*       Main part of the script dedicated to running all of the combined scripts after a user clicks the Submit button
 *
 * NOTES :
 *
-* AUTHOR :    Daniel W. Anner - Z00231757 - Program #1 - CSIS4251 */
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #2 - CSIS4251 */
 $("#evaluate").on("click", function(e) {
   e.preventDefault(); //Prevent the default "submit" action
 

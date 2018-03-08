@@ -1,3 +1,13 @@
+/*
+* FILENAME :        dynamic.js
+*
+* DESCRIPTION :
+*       Script for the dynamic partition memory type - implements BestFit, FirstFit, NextFit, and WorstFit
+*
+* NOTES :
+*
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #2 - CSIS4251
+*/
 function d_bestFit(partitions, jobs) {
   var outputPage = $("#output"); $("<div style='width: 100%; text-align: centered;'><h4>Best Fit Scheme</h4></div><br />").appendTo(outputPage);
   var allPartitions = [], busy = [];
