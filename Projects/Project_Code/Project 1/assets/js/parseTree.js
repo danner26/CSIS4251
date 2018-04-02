@@ -34,7 +34,7 @@ function parseTree(str) {
     //console.log(tks[1]);
 
     // Loop through the tokens and process each split at ()'s'
-    for(i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
+    for(var i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
     // Check for mismatching parentheses
     if(~tks.indexOf("(") || ~tks.indexOf(")")) {
         var newError = document.createElement('p'); // create an "invisible" (empty) element
@@ -57,12 +57,12 @@ function parseTree(str) {
 function processSplit(tks){
     // Sort through each single node
     sNode.operands.forEach(tk => {
-        for(i=-i; (i=tks.indexOf(tk, i+1)) > -1;) tks.splice(i, 2, new sNode(tk, tks[i+1])); // Splice each sNode, and create new sNode's where applicable
+        for(var i=-i; (i=tks.indexOf(tk, i+1)) > -1;) tks.splice(i, 2, new sNode(tk, tks[i+1])); // Splice each sNode, and create new sNode's where applicable
     })
 
     // Sort through each binary node
     bNode.operands.forEach(tk => {
-        for(i=1; (i=tks.indexOf(tk, i-1)) > -1;) tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); // Splice each bNode, and create new bNode's where applicable
+        for(var i=1; (i=tks.indexOf(tk, i-1)) > -1;) tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); // Splice each bNode, and create new bNode's where applicable
     });
     return tks[0]; // Return spliced results as a single token
 }
