@@ -1,72 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Program #1 - CSIS4251</title>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="../../assets/css/main_site.css" />
-    <link rel="stylesheet" type="text/css" href="../../assets/css/album.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../../assets/css/bootstrap-grid.min.css">
-  </head>
-  <body>
-    <nav class="site-header sticky-top py-1">
-      <div class="container d-flex flex-column flex-md-row ">
-        <div class="back-to-home">
-          <a href="../../index.html"><i class="fa fa-arrow-left"></i><span> Back to Home</span></a>
-        </div>
-        <div class="centered">
-          <h1>CSIS 4251 Projects</h1>
-        </div>
+<head>
+  <title>Program #1 - CSIS4251</title>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main_site.css" />
+  <link rel="stylesheet" type="text/css" href="../../assets/css/album.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="../../assets/css/bootstrap-grid.min.css">
+</head>
+
+<body>
+  <nav class="site-header sticky-top py-1">
+    <div class="container d-flex flex-column flex-md-row ">
+      <div class="back-to-home">
+        <a href="../../index.html"><i class="fa fa-arrow-left"></i><span> Back to Home</span></a>
       </div>
-    </nav>
-    <main role="main" class="container" id="mainSection">
-      <div class="page-header">
-        <h1>Expression Tree</h1>
-      </div>
-      <hr/>
-      <h4 style="text-align: center;">Input Your Expression</h4>
-      <form style="text-align: center;">
-        <input type="text" id="string" name="string" placeholder="Input here.."><input id="clickMe" type="button" value="Convert!" onclick="onStartClick();" />
-      </form>
-      <br />
-      <p>
-        <u>Some Examples:</u><br />
-        3*5/4-3+7^2*6<br />
-        4+2/5-9*4
-      </p>
-      <hr />
-      <h4 style="text-align: center;">Expression Visualization</h4>
-      <div id="treeVisualization"></div>
-      <hr />
-      <h4 style="text-align: center;">Expression Traversals</h4>
       <div class="centered">
-        <p id="preorder"><b>Pre-Order: </b></p>
-        <p id="inorder"><b>In-Order: </b></p>
-        <p id="postorder"><b>Post-Order: </b></p>
+        <h1>CSIS 4251 Projects</h1>
       </div>
-      <div id="errors"></div>
-    </main>
+    </div>
+  </nav>
+  <main role="main" class="container" id="mainSection">
+    <div class="page-header">
+      <h1>Expression Tree</h1>
+    </div>
+    <hr/>
+    <h4 style="text-align: center;">Input Your Expression</h4>
+    <form style="text-align: center;">
+      <input type="text" id="string" name="string" placeholder="Input here.."><input id="clickMe" type="button" value="Convert!" onclick="onStartClick();" />
+    </form>
+    <br />
+    <p>
+      <u>Some Examples:</u><br /> 3*5/4-3+7^2*6
+      <br /> 4+2/5-9*4
+    </p>
+    <hr />
+    <h4 style="text-align: center;">Expression Visualization</h4>
+    <div id="treeVisualization"></div>
+    <hr />
+    <h4 style="text-align: center;">Expression Traversals</h4>
+    <div class="centered">
+      <p id="preorder"><b>Pre-Order: </b></p>
+      <p id="inorder"><b>In-Order: </b></p>
+      <p id="postorder"><b>Post-Order: </b></p>
+    </div>
+    <div id="errors"></div>
+  </main>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Daniel W. Anner - Z00231757 - Program #1 - CSIS4251</span>
-      </div>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Daniel W. Anner - Z00231757 - Program #1 - CSIS4251</span>
+    </div>
+  </footer>
 
-    <script src="assets/js/draw/createTreeOnPage.js"></script>
-    <script src="assets/js/tree.js"></script>
-    <script src="assets/js/parseTree.js"></script>
-    <script src="assets/js/traversals.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../assets/js/vendor/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../assets/js/vendor/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../../assets/js/vendor/holder.min.js"></script>
-    <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  </body>
+  <script src="assets/js/draw/createTreeOnPage.js"></script>
+  <script src="assets/js/tree.js"></script>
+  <script src="assets/js/parseTree.js"></script>
+  <script src="assets/js/traversals.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/holder.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116695446-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116695446-1');
+  </script>
+
+</body>
+
 </html>
