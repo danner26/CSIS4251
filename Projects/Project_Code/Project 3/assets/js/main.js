@@ -6,3 +6,10 @@
 * NOTES :
 *
 * AUTHOR :    Daniel W. Anner - Z00231757 - Program #3 - CSIS4251 */
+$(document).ready(function() {
+  $("#rangeSlider").ionRangeSlider({
+      min: 2,
+      max: 5,
+      from: 2
+  });
+});

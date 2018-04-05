@@ -3,17 +3,22 @@
 
 <head>
   <title>Program #3 - CSIS4251</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../assets/css/bootstrap-reboot.min.css" />
+  <link rel="stylesheet" href="../../assets/css/bootstrap-grid.min.css" />
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet" />
+
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="assets/css/vendor/ion.rangeSlider.css" />
+  <link rel="stylesheet" href="assets/css/vendor/ion.rangeSlider.skinFlat.css" />
+  <link rel="stylesheet" href="assets/css/vendor/normalize.css" />
+
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="../../assets/css/main_site.css" />
   <link rel="stylesheet" type="text/css" href="../../assets/css/album.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
   <link rel="stylesheet" type="text/css" href="../../assets/css/sticky-footer.css" />
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../assets/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="../../assets/css/bootstrap-grid.min.css">
-  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,6 +37,48 @@
     <div class="page-header">
       <h2>Page Removal Policies</h2>
     </div>
+    <hr />
+
+    <form class="page_policy noselect">
+      <fieldset>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="page_frames">
+              <div class="title bold">
+                <p>Page Frames</p>
+              </div>
+              <div class="internal_padding">
+                <input type="text" id="rangeSlider" name="Range Slider" value="" />
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-4">
+            <div class="pages internal_padding">
+              <div class="title bold">
+                <p>List the Processes</p>
+              </div>
+              <div class="internal_padding">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%; text-align: center; display: inline-block;">
+          <button class="btn btn-primary" id="evaluate" type="submit">Submit</button>
+          <button class="btn btn-danger" type="submit">Reset</button>
+          <div class="checkboxes" style="display: inline-block;">
+            <label for="toChangeText"><input type="checkbox" id="toChangeText" /> <span>Disable examples?</span></label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <br />
+    <br />
+    <div id="output">
+
+    </div>
 
   </main>
 
@@ -49,6 +96,7 @@
   <script type="text/javascript" src="assets/js/main.js"></script>
   <script type="text/javascript" src="assets/js/schemes/fifo.js"></script>
   <script type="text/javascript" src="assets/js/schemes/lru.js"></script>
+  <script type="text/javascript" src="assets/js/vendor/ion.rangeSlider.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116695446-1"></script>
