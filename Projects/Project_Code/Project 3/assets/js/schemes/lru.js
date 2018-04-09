@@ -14,7 +14,7 @@ function LRU(frames, processes) {
 	var hit = 0, miss = 0;
 	var lr = [];
 
-	outputPage = $("#outputLeft"); $("<div style='width: 100%; text-align: centered;'><h4><u>Least Recently Used</u></h4></div><br />").appendTo(outputPage);
+	var outputPage = $("#outputLeft"); $("<div style='width: 100%; text-align: centered;'><h4><u>Least Recently Used</u></h4></div><br />").appendTo(outputPage);
 
 	while (!Array.isArray(processes) || !(processes.length === 0)) {
 		job = processes[0];
