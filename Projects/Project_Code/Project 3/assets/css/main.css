@@ -1,3 +1,13 @@
+/*
+* FILENAME :        main.css
+*
+* DESCRIPTION :
+*       CSS script for main site
+*
+* NOTES :
+*
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #3 - CSIS4251
+*/
 label {
   display: block;
   float: left;
@@ -76,4 +86,7 @@ height: 100%;
 
 p {
   margin-bottom: 3px;
+}
+.errors {
+  color: red;
 }

@@ -9,7 +9,7 @@
 * AUTHOR :    Daniel W. Anner - Z00231757 - Program #3 - CSIS4251
 */
 function LRU(frames, processes) {
-	var tempHolder = processes;
+	if (processes[0] === "") { return; }
 	var job, hm = "";
 	var hit = 0, miss = 0;
 	var lr = [];
@@ -54,6 +54,7 @@ function LRU(frames, processes) {
 		processes.shift();
 	}
 
+	$("<hr />").appendTo(outputPage);
 	$("<p><h3>Currently in cache?</h3></p><br />").appendTo(outputPage);
 	var table = $("<table class='table'><thead><tr><th scope='col'>Items in Cache</th> \
 		<th scope='col'>Items</th></tr></thead><tbody>");

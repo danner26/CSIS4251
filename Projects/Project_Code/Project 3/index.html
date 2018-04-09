@@ -67,7 +67,7 @@
         </div>
         <div style="width: 100%; text-align: center; display: inline-block;">
           <button class="btn btn-primary" id="evaluate" type="submit">Submit</button>
-          <button class="btn btn-danger" type="submit">Reset</button>
+          <button class="btn btn-danger" id="reload" type="submit">Reset</button>
           <div class="checkboxes" style="display: inline-block;">
             <label for="toChangeText"><input type="checkbox" id="toChangeText" /> <span>Disable examples?</span></label>
           </div>
@@ -78,8 +78,9 @@
     <br />
 
     <div>
+      <div class="errors"></div>
       <div class="row text-center">
-        <div class="col-md-6 outputLeft" id="outputLeft"></div>
+        <div class="col-md-6 outputLeft" id="outputLeft" style="border-right: 1px solid #ccc;"></div>
         <div class="col-md-6 outputRight" id="outputRight"></div>
       </div>
     </div>

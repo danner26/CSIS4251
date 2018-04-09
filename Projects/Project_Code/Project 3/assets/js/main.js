@@ -6,12 +6,12 @@
 * NOTES :
 *
 * AUTHOR :    Daniel W. Anner - Z00231757 - Program #3 - CSIS4251 */
-var sliderValue = 2; // Global variable to define the slider's value (AKA number of page frames)
+var sliderValue = 3; // Global variable to define the slider's value (AKA number of page frames)
 $(document).ready(function() {
   $("#rangeSlider").ionRangeSlider({
       min: 2,
       max: 5,
-      from: 2,
+      from: 3,
       onFinish: function(num) {
         sliderValue = num.from;
       }
@@ -36,6 +36,8 @@ $(document).ready(function() {
 $("#evaluate").on("click", function(e) {
   e.preventDefault(); //Prevent the default "submit" action
 
+  $(".errors").html('');
+
   // Acquire the job sizes and parse them into an array
   processTextArea($("textarea#processes"));
 
@@ -45,6 +47,12 @@ $("#evaluate").on("click", function(e) {
 
   LRU(sliderValue, parseProcesses($("#processes")));
   FIFO(sliderValue, parseProcesses($("#processes")));
+});
+
+$("#reload").on("click", function(e) {
+  e.preventDefault();
+
+  location.reload();
 });
 
 function processTextArea(textarea) {
@@ -64,6 +72,10 @@ function processTextArea(textarea) {
 
 function parseProcesses(textarea) {
   var processes = textarea.val().split(",");
+  if (!Array.isArray(processes) || (processes[0] === "")) {
+    $("<div>ERROR! Please input data to the processes textarea.</div>").appendTo($(".errors"));
+    return;
+  }
 
   // Parse both arrays string values into int's
   var temp = [];
