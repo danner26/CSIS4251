@@ -57,10 +57,10 @@
           <div class="col-4">
             <div class="pages internal_padding">
               <div class="title bold">
-                <p>List the Processes</p>
+                <p>List the Processes (#'s only)</p>
               </div>
               <div class="internal_padding">
-
+                <textarea class="form-control textarea" id="processes" type="number" required></textarea>
               </div>
             </div>
           </div>
@@ -76,8 +76,12 @@
     </form>
     <br />
     <br />
-    <div id="output">
 
+    <div>
+      <div class="row text-center">
+        <div class="col-md-6 outputLeft" id="outputLeft"></div>
+        <div class="col-md-6 outputRight" id="outputRight"></div>
+      </div>
     </div>
 
   </main>
@@ -87,16 +91,20 @@
       <span class="text-muted">Daniel W. Anner - Z00231757 - Program #3 - CSIS4251</span>
     </div>
   </footer>
+  <!-- Vendor/Bootstrap JavaScript/jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="../../assets/js/vendor/bootstrap.min.js"></script>
   <script type="text/javascript" src="../../assets/js/vendor/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="../../assets/js/vendor/holder.min.js"></script>
   <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script type="text/javascript" src="assets/js/vendor/ion.rangeSlider.js"></script>
+  <!-- http://ionden.com/a/plugins/ion.rangeSlider/en.html -->
+
+  <!-- Custom JavaScript/jQuery -->
   <script type="text/javascript" src="assets/js/main.js"></script>
   <script type="text/javascript" src="assets/js/schemes/fifo.js"></script>
   <script type="text/javascript" src="assets/js/schemes/lru.js"></script>
-  <script type="text/javascript" src="assets/js/vendor/ion.rangeSlider.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116695446-1"></script>
@@ -110,7 +118,6 @@
 
     gtag('config', 'UA-116695446-1');
   </script>
-
 </body>
 
 </html>
