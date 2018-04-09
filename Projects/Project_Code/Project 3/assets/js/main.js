@@ -12,7 +12,7 @@ $(document).ready(function() {
       min: 2,
       max: 5,
       from: 3,
-      onFinish: function(num) {
+      onFinish(num) {
         sliderValue = num.from;
       }
   });
@@ -25,38 +25,16 @@ $(document).ready(function() {
     var a = [],
       k = e.which;
 
-    for (var i = 48; i < 58; i++) a.push(i);
+    for (var i = 48; i < 58; i++) { a.push(i); }
 
-    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) e.preventDefault();
+    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) { e.preventDefault(); }
 
-    $("textarea#processes").val($("textarea#processes").val().split(' ').join(','));
+    $("textarea#processes").val($("textarea#processes").val().split(" ").join(","));
   });
 });
 
-$("#evaluate").on("click", function(e) {
-  e.preventDefault(); //Prevent the default "submit" action
-
-  $(".errors").html('');
-
-  // Acquire the job sizes and parse them into an array
-  processTextArea($("textarea#processes"));
-
-  // Clear the output div before placing new data
-  $("#outputLeft").html('');
-  $("#outputRight").html('');
-
-  LRU(sliderValue, parseProcesses($("#processes")));
-  FIFO(sliderValue, parseProcesses($("#processes")));
-});
-
-$("#reload").on("click", function(e) {
-  e.preventDefault();
-
-  location.reload();
-});
-
 function processTextArea(textarea) {
-  var values = $(textarea).val().split(','); // Split the value at our delimiter (a comma)
+  var values = $(textarea).val().split(","); // Split the value at our delimiter (a comma)
   for (i = 0; i < values.length; i++) { // Loop through all values entered
     if ((values[i] === "") || (values[i] === " ")) {
       console.log(values[i] + " is an unallowed value; removing it."); // Log the incident
@@ -64,10 +42,10 @@ function processTextArea(textarea) {
       i--; // Move our counter back so we start at the current position
     }
     // If statement to catch the case where the first value is a whitespace
-    if (!(i < 0)) { values[i] = values[i].replace(/\s/g, ''); } // Remove any trailing whitespace
+    if (!(i < 0)) { values[i] = values[i].replace(/\s/g, ""); } // Remove any trailing whitespace
 
   }
-  $(textarea).val(values.join(',')); // Re-add the comma delimiters for easy parsing later on
+  $(textarea).val(values.join(",")); // Re-add the comma delimiters for easy parsing later on
 }
 
 function parseProcesses(textarea) {
@@ -85,3 +63,25 @@ function parseProcesses(textarea) {
 
   return temp;
 }
+
+$("#evaluate").on("click", function(e) {
+  e.preventDefault(); //Prevent the default "submit" action
+
+  $(".errors").html("");
+
+  // Acquire the job sizes and parse them into an array
+  processTextArea($("textarea#processes"));
+
+  // Clear the output div before placing new data
+  $("#outputLeft").html("");
+  $("#outputRight").html("");
+
+  LRU(sliderValue, parseProcesses($("#processes")));
+  FIFO(sliderValue, parseProcesses($("#processes")));
+});
+
+$("#reload").on("click", function(e) {
+  e.preventDefault();
+
+  location.reload();
+});

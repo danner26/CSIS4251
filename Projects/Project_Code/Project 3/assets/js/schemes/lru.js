@@ -65,8 +65,8 @@ function LRU(frames, processes) {
 	table.appendTo(outputPage);
 
 	var total = hit + miss;
-	hitPercent = (parseFloat((hit / total) * 100).toFixed(2));
-	missPercent = (parseFloat((miss / total) * 100).toFixed(2));
+	var hitPercent = (parseFloat((hit / total) * 100).toFixed(2));
+	var missPercent = (parseFloat((miss / total) * 100).toFixed(2));
 
 	$("<div class='hitOrmiss'><div class='hits'>Hits: " + hit + "  -  <b>" + hitPercent + "%</b></div><div class='hits'>Misses: " + miss + "  -  <b>" +	missPercent + "%</b></div></div>").appendTo(outputPage);
 }
