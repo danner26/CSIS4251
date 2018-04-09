@@ -14,7 +14,7 @@ function FIFO(frames, processes) {
 	var hit = 0, miss = 0;
 	var fifo = [];
 
-	outputPage = $("#outputRight"); $("<div style='width: 100%; text-align: centered;'><h4><u>First-In First-Out</u></h4></div><br />").appendTo(outputPage);
+	var outputPage = $("#outputRight"); $("<div style='width: 100%; text-align: centered;'><h4><u>First-In First-Out</u></h4></div><br />").appendTo(outputPage);
 
 	while (!Array.isArray(processes) || !(processes.length === 0)) {
 		job = processes[0];

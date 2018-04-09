@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   // Everytime a user types, it will check if the key is a number or a space, otherwise it doesnt allow it
   // If there is a space in the field, it will remove and replace it with a comma
-  $('textarea').keypress(function(e) {
+  $("textarea").keypress(function(e) {
     var a = [],
       k = e.which;
 
