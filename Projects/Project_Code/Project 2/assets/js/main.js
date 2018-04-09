@@ -22,7 +22,7 @@ $("#evaluate").on("click", function(e) {
   jobs = temp;
   temp = [];
   for (i = 0; i < partitions.length; i++) {
-    if (partitions[i] !== "") temp.push(parseInt(partitions[i]));
+    if (partitions[i] !== "") { temp.push(parseInt(partitions[i])); }
   }
   partitions = temp;
 
@@ -81,25 +81,6 @@ function determinAlgorithm(partitionType, algorithmType, partitions, jobs) {
 
 /* On start these functions are loaded */
 document.addEventListener('DOMContentLoaded', function () {
-  // Add listner to increase button to increase the value box by 1
-  $('.increase').on('click', function () {
-    var oldValue = $(this).parent().find("input").val();
-
-    if (oldValue >= 1) {
-      var newVal = parseFloat(oldValue) + 1;
-    } else {
-      newVal = 1;
-    }
-    $(this).parent().find("input").val(newVal);
-  });
-  // Add listner to decrease button to decrease the value box by 1
-  $(".decrease").on("click", function() {
-    var oldValue = $(this).parent().find("input").val(), newVal = 1;
-
-    if (oldValue > 1) newVal = parseFloat(oldValue) - 1;
-
-    $(this).parent().find("input").val(newVal);
-  });
   // Everytime a user types, it will check if the key is a number or a space, otherwise it doesnt allow it
   // If there is a space in the field, it will remove and replace it with a comma
   $('textarea').keypress(function(e) {
