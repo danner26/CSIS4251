@@ -8,6 +8,7 @@
 
 .flex-equal>* {
   -moz-box-flex: 1;
+  -ms-box-flex: 1;
   -ms-flex: 1;
   -ms-flex-bot: 1;
   -webkit-box-flex: 1;
@@ -16,10 +17,11 @@
 
 @media (min-width: 768px) {
   .flex-md-equal>* {
-    flex: 1;
     -moz-box-flex: 1;
+    -ms-box-flex: 1;
     -ms-flex: 1;
     -ms-flex-bot: 1;
     -webkit-box-flex: 1;
+    flex: 1;
   }
 }
