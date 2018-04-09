@@ -12,7 +12,6 @@ body {
 .site-header {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   background-color: rgba(0, 0, 0, .85);
-  backdrop-filter: saturate(180%) blur(20px);
   color: #999;
   transition: ease-in-out color .15s;
 }
@@ -27,13 +26,13 @@ body {
   text-decoration: none;
 }
 
-.page-header h1 {
+ h1 .page-header {
   color: #336FFE;
   font-size: 20pt;
   text-align: center;
 }
 
-.page-header h2 {
+h2 .page-header {
   color: #336FFE;
   font-size: 20pt;
   text-align: center;

@@ -53,7 +53,7 @@ function parseTree(str) {
     //console.log(tks[1]);
 
     // Loop through the tokens and process each split at ()'s'
-    for(i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
+    for(var i, j; (i = tks.lastIndexOf("(")) > -1 && (j=tks.indexOf(")", i)) > -1;){ tks.splice(i, j+1-i, processSplit(tks.slice(i+1, j))); }
     // Check for mismatching parentheses
     if(~tks.indexOf("(") || ~tks.indexOf(")")) {
         var newError = document.createElement("p"); // create an "invisible" (empty) element
