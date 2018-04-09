@@ -8,14 +8,12 @@
 *
 * AUTHOR :    Daniel W. Anner - Z00231757 - Program #2 - CSIS4251
 */
-function d_bestFit(partitions, jobs) {
+function dBestFit(partitions, jobs) {
   var outputPage = $("#output"); $("<div style='width: 100%; text-align: centered;'><h4>Best Fit Scheme</h4></div><br />").appendTo(outputPage);
   var allPartitions = [], busy = [];
   var tempFragmentation = 0, fragmentation = 0, freePos = 0;
   var matched = false;
-  for (i = 0; i < partitions.length; i++) {
-    allPartitions[i] = partitions[i];
-  }
+  for (i = 0; i < partitions.length; i++) { allPartitions[i] = partitions[i]; }
 
   for (i = 0; i < jobs.length; i++) {
     var memoryAddress = 0;
@@ -25,7 +23,7 @@ function d_bestFit(partitions, jobs) {
 
     for (j = 0; j < partitions.length; j++) {
       if (partitions[j] >= jobs[i]) {
-        if (!matched) { freePos = j; matched = true }
+        if (!matched) { freePos = j; matched = true; }
         else if (partitions[freePos] > partitions[j]) { freePos = j; matched = true; }
         else if (tempFragmentation >= (partitions[j] - jobs[i])) { freePos = j; matched = true; }
       }
@@ -70,11 +68,11 @@ function d_bestFit(partitions, jobs) {
   }
 }
 
-function d_firstFit(partitions, jobs) {
+function dFirstFit(partitions, jobs) {
   var outputPage = $("#output"); $("<div style='width: 100%; text-align: centered;'><h4>First Fit Scheme</h4></div><br />").appendTo(outputPage);
   var allPartitions = [], busy = [];
   var fragmentation = 0;
-  for (i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
+  for (i = 0; i < partitions.length; i++) { allPartitions[i] = partitions[i]; }
 
   for (i = 0; i < jobs.length; i++) {
     for (j = 0; j < partitions.length; j++) {
@@ -122,13 +120,13 @@ function d_firstFit(partitions, jobs) {
   }
 }
 
-function d_nextFit(partitions, jobs) {
+function dNextFit(partitions, jobs) {
   var outputPage = $("#output"); $("<div style='width: 100%; text-align: centered;'><h4>Next Fit Scheme</h4></div><br />").appendTo(outputPage);
   var table = $("<table class='table'><thead><tr><th scope='col'>Partition Size</th> \
     <th scope='col'>Memory Address</th><th scope='col'>Access</th><th scope='col'>Partition Status</th></tr></thead><tbody>");
   var allPartitions = [], busy = [];
   var fragmentation = 0, position = 0, zPosition = 0;
-  for (i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
+  for (i = 0; i < partitions.length; i++) { allPartitions[i] = partitions[i]; }
 
   for (i = 0; i < jobs.length; i++) {
     for (j = position; j < partitions.length; j++) {
@@ -185,14 +183,14 @@ function d_nextFit(partitions, jobs) {
   $("<hr><br />").appendTo(outputPage);
 }
 
-function d_worstFit(partitions, jobs) {
+function dWorstFit(partitions, jobs) {
   var outputPage = $("#output"); $("<div style='width: 100%; text-align: centered;'><h4>Worst Fit Scheme</h4></div><br />").appendTo(outputPage);
   var table = $("<table class='table'><thead><tr><th scope='col'>Partition Size</th> \
     <th scope='col'>Memory Address</th><th scope='col'>Access</th><th scope='col'>Partition Status</th></tr></thead><tbody>");
 		var allPartitions = [], busy = [];
 		var tempFrag = 0, fragmentation = 0, freePos = 0;
     var matchFound = false;
-		for (i = 0; i < partitions.length; i++) allPartitions[i] = partitions[i];
+		for (i = 0; i < partitions.length; i++) { allPartitions[i] = partitions[i]; }
 
 		for (i = 0; i < jobs.length; i ++) {
 			for (z = 0; z < partitions.length; z++) {
