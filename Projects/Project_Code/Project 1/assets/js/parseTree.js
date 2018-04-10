@@ -15,12 +15,12 @@
 function processSplit(tks){
     // Sort through each single node
     sNode.operands.forEach((tk) => {
-        for(i=-i; (i=tks.indexOf(tk, i+1)) > -1;) { tks.splice(i, 2, new sNode(tk, tks[i+1])); } // Splice each sNode, and create new sNode's where applicable
+        for(var i=-i; (i=tks.indexOf(tk, i+1)) > -1;) { tks.splice(i, 2, new sNode(tk, tks[i+1])); } // Splice each sNode, and create new sNode's where applicable
     });
 
     // Sort through each binary node
     bNode.operands.forEach((tk) => {
-        for(i=1; (i=tks.indexOf(tk, i-1)) > -1;) { tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); } // Splice each bNode, and create new bNode's where applicable
+        for(var i=1; (i=tks.indexOf(tk, i-1)) > -1;) { tks.splice(i-1, 3, new bNode(tk, tks[i-1], tks[i+1])); } // Splice each bNode, and create new bNode's where applicable
     });
     return tks[0]; // Return spliced results as a single token
 }
@@ -34,7 +34,7 @@ function characterize(str) {
 function parseTree(str) {
     // Build Regex for Parsing
     // Regex for numbers, Regex for operators, Regex for whitespace
-    var parser = new RegExp([/\d+(?:\.\d*)?|\.\d+/.source,[".", "(", ")"].concat(sNode.operands, bNode.operands).map(characterize).join("|"), /[a-zA-Z$_][a-zA-Z0-9$_]*/.source, /\S/.source].map(s => "("+ s +")").join("|"), "g");
+    var parser = new RegExp([/\d+(?:\.\d*)?|\.\d+/.source,[".", "(", ")"].concat(sNode.operands, bNode.operands).map(characterize).join("|"), /[a-zA-Z$_][a-zA-Z0-9$_]*/.source, /\S/.source].map((s) => "("+ s +")").join("|"), "g");
     var tks = []; // array of tokens once seperated and objectified properly
     // using String.replace as a forEach function
     str.replace(parser, function(tk, num, operand) {
@@ -64,7 +64,7 @@ function parseTree(str) {
     }
 
     // I got lazy and decided to structre the tree another way for the display, but I did not feel like rewritting the code I already wrote for the traversals.. so here we are
-    for (i = 0; i < tks.length; i++) {
+    for (var i = 0; i < tks.length; i++) {
         if (tks[i].value) { addToTree(tks[i].value); } // Add each "value" to the new tree (operands and values are different in this old tree) :D
         else { addToTree(tks[i]); } // Add each operand to the new tree!
     }
