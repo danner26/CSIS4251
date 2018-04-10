@@ -1,4 +1,0 @@
-codecov:
-  token: 366e3218-08d1-45cd-a8d3-db6f6d4c39d1
-  ignore:
-    - "vendor/**/*"
