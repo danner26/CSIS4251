@@ -2,7 +2,7 @@
 // Base Node
 class Base {
     constructor() { Object.defineProperty(this,"parent",{writable: true,value: null}); } // Constructor method
-    toString() { throw new Error("not implemented") } // toString to print result
+    toString() { throw new Error("not implemented"); } // toString to print result
 }
 
 // Number nodes
