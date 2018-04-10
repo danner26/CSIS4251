@@ -34,7 +34,7 @@ function characterize(str) {
 function parseTree(str) {
     // Build Regex for Parsing
     // Regex for numbers, Regex for operators, Regex for whitespace
-    var parser = new RegExp([/\d+(?:\.\d*)?|\.\d+/.source,[".", "(", ")"].concat(sNode.operands, bNode.operands).map(characterize).join("|"), /[a-zA-Z$_][a-zA-Z0-9$_]*/.source, /\S/.source].map(s => "("+ s +")").join("|"), "g");
+    var parser = new RegExp([/\d+(?:\.\d*)?|\.\d+/.source,[".", "(", ")"].concat(sNode.operands, bNode.operands).map(characterize).join("|"), /[a-zA-Z$_][a-zA-Z0-9$_]*/.source, /\S/.source].map((s) => "("+ s +")").join("|"), "g");
     var tks = []; // array of tokens once seperated and objectified properly
     // using String.replace as a forEach function
     str.replace(parser, function(tk, num, operand) {

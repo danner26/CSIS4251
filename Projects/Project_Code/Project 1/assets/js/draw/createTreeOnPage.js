@@ -16,13 +16,13 @@ var Node = function(xCoord, yCoord, radius, theCanvas, value) {
   this.right = null; // right value
 
   // Internal functions for the node
-  this.draw = function() { theCanvas.beginPath(); theCanvas.arc(xCoord, yCoord, radius, 0, 2*Math.PI); theCanvas.stroke(); theCanvas.closePath(); theCanvas.strokeText(value, xCoord, yCoord); }
-  this.getValue = function() { return value; } // Getter: retrieves the nodes value
-  this.getXCoord = function() { return xCoord; } // Getter: retrieves the nodes X Coordinate
-  this.getYCoord = function() { return yCoord; } // Getter: retrieves the nodes Y Coordinate
-  this.getRadius = function() { return radius; } // Getter: retrieves the nodes radius
-  this.leftCoord = function() { return {cx: (xCoord - (4*radius)), cy: (yCoord + (4*radius))} } // Getter: retrieves the nodes left-most (bottom) coordinates in (x,y) form
-  this.rightCoord = function() { return {cx: (xCoord + (4*radius)), cy: (yCoord+(4*radius))} } // Getter: retrieves the nodes right-most (bottom) coordinates in (x,y) form
+  this.draw = function() { theCanvas.beginPath(); theCanvas.arc(xCoord, yCoord, radius, 0, 2*Math.PI); theCanvas.stroke(); theCanvas.closePath(); theCanvas.strokeText(value, xCoord, yCoord); };
+  this.getValue = function() { return value; }; // Getter: retrieves the nodes value
+  this.getXCoord = function() { return xCoord; }; // Getter: retrieves the nodes X Coordinate
+  this.getYCoord = function() { return yCoord; }; // Getter: retrieves the nodes Y Coordinate
+  this.getRadius = function() { return radius; }; // Getter: retrieves the nodes radius
+  this.leftCoord = function() { return {cx: (xCoord - (4*radius)), cy: (yCoord + (4*radius))} }; // Getter: retrieves the nodes left-most (bottom) coordinates in (x,y) form
+  this.rightCoord = function() { return {cx: (xCoord + (4*radius)), cy: (yCoord+(4*radius))} }; // Getter: retrieves the nodes right-most (bottom) coordinates in (x,y) form
 }
 
 // Draw a line from one node to another
