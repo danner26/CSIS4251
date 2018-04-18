@@ -88,7 +88,7 @@
             </div>
           </div>
         </div>
-        <div style="width: 100%; text-align: center; display: inline-block;">
+        <div style="width: 100%; text-align: center; display: inline-block; padding-top: 15px;">
           <button class="btn btn-primary" id="evaluate" type="submit">Submit</button>
           <button class="btn btn-danger" id="reload" type="submit">Reset</button>
           <div class="checkboxes" style="display: inline-block;">
@@ -97,6 +97,13 @@
         </div>
       </fieldset>
     </form>
+    <br />
+    <br />
+
+    <div>
+      <div class="errors"></div>
+      <div class="output" id="output"></div>
+    </div>
   </main>
 
   <footer class="footer">
@@ -110,6 +117,12 @@
   <script type="text/javascript" src="../../assets/js/vendor/holder.min.js"></script>
   <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+  <script type="text/javascript" src="assets/js/algorithms/fcfs.js"></script>
+  <script type="text/javascript" src="assets/js/algorithms/rr.js"></script>
+  <script type="text/javascript" src="assets/js/algorithms/sjn.js"></script>
+  <script type="text/javascript" src="assets/js/algorithms/srt.js"></script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
 
   <script type="text/javascript">
     // Basic function to load examples on radio button selection
@@ -134,7 +147,6 @@
 
     gtag('config', 'UA-116695446-1');
   </script>
-
 </body>
 
 </html>
