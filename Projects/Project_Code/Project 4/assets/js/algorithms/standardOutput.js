@@ -1,9 +1,21 @@
-function srt(jobs) {
-  console.log("Starting SRT Algorithm @ " + (
-  new Date()).toString() + "!");
-
+function standardOutput(alg, jobs) {
+  var algName = "";
+  switch (alg) {
+    case "fcfs":
+      algName = "First-Come First-Serve";
+      break;
+    case "srt":
+      algName = "Shortest Remaining Time";
+      break;
+    case "sjn":
+      algName = "Shortest Job Next";
+      break;
+    case "rr":
+      algName = "Round-Robin";
+      break;
+  }
   var outputPage = $("#output");
-  $("<div style='width: 100%; text-align: centered;'><h4><u>Shortest Remaining Time</u></h4></div><br />").appendTo(outputPage);
+  $("<div style='width: 100%; text-align: centered;'><h4><u>" + algName + "</u></h4></div><br />").appendTo(outputPage);
   var time = 0,
     allTA = 0,
     allWT = 0;
@@ -39,7 +51,4 @@ function srt(jobs) {
   }
   $("<div style='display: inline-block;'><h6>Average Wait Time:</h6></div><div style='display: inline-block; padding-left: 5px;'>" + (
   allWT / jobs.length) + "</div><br />").appendTo(outputPage);
-
-  console.log("Ending SRT Algorithm @ " + (
-  new Date()).toString() + "!");
 }

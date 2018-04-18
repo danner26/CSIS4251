@@ -44,7 +44,7 @@
               </div>
               <div style="width: 100%;">
                 <div class="internal_padding">
-                  <div class="algType"><label><input type="radio" name="alg_type" id="alg_fcfs" value="alg_fcfs" onchange="changeDefaultText(this.value)"> FCFS</label></div>
+                  <div class="algType"><label><input type="radio" name="alg_type" id="alg_fcfs" value="alg_fcfs" onchange="changeDefaultText(this.value)" checked> FCFS</label></div>
                   <div class="algType"><label><input type="radio" name="alg_type" id="alg_srt" value="alg_srt" onchange="changeDefaultText(this.value)"> SRT</label></div>
                 </div>
                 <div class="internal_padding">
@@ -60,7 +60,7 @@
                 <p>Jobs</p>
               </div>
               <div class="internal_padding">
-                <textarea class="form-control textarea" id="jobs" type="text" required></textarea>
+                <textarea class="form-control textarea" id="jobs" required>A,B,C,D,E,F,G,H,I,J</textarea>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
                 <p>Arrival Time (ms - #'s only)</p>
               </div>
               <div class="internal_padding">
-                <textarea class="form-control textarea" id="arrivalTime" type="number" required></textarea>
+                <textarea class="form-control textarea" id="arrivalTime" type="number" required>0,3,5,9,10,12,14,16,17,19</textarea>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@
                 <p>CPU Cycle (#'s only)</p>
               </div>
               <div class="internal_padding">
-                <textarea class="form-control textarea" id="cpuCycle" type="number" required></textarea>
+                <textarea class="form-control textarea" id="cpuCycle" type="number" required>16,2,11,6,1,9,4,14,1,8</textarea>
               </div>
             </div>
           </div>
@@ -118,6 +118,8 @@
   <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+  <script type="text/javascript" src="assets/js/algorithms/standardOutput.js"></script>
+  <script type="text/javascript" src="assets/js/algorithms/solver.js"></script>
   <script type="text/javascript" src="assets/js/algorithms/fcfs.js"></script>
   <script type="text/javascript" src="assets/js/algorithms/rr.js"></script>
   <script type="text/javascript" src="assets/js/algorithms/sjn.js"></script>
