@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Program #4 - CSIS4251</title>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main_site.css" />
+  <link rel="stylesheet" type="text/css" href="../../assets/css/album.css" />
+  <link rel="stylesheet" type="text/css" href="../../assets/css/sticky-footer.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="../../assets/css/bootstrap-grid.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="site-header sticky-top py-1">
+    <div class="container d-flex flex-column flex-md-row">
+      <div class="back-to-home">
+        <a href="../../index.html"><i class="fa fa-arrow-left"></i><span> Back to Home</span></a>
+      </div>
+      <div class="centered">
+        <h1>CSIS 4251 Projects</h1>
+      </div>
+    </div>
+  </nav>
+
+  <main role="main" class="container" id="mainSection">
+    <div class="page-header">
+      <h2>CPU Algorithms</h2>
+    </div>
+    <hr />
+
+    <form class="page_policy noselect">
+      <fieldset>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="alg_type">
+              <div class="title bold">
+                <p>Type of Algorithm</p>
+              </div>
+              <div style="width: 100%;">
+                <div class="internal_padding">
+                  <div class="algType"><label><input type="radio" name="alg_type" id="alg_fcfs" value="alg_fcfs" onchange="changeDefaultText(this.value)"> FCFS</label></div>
+                  <div class="algType"><label><input type="radio" name="alg_type" id="alg_srt" value="alg_srt" onchange="changeDefaultText(this.value)"> SRT</label></div>
+                </div>
+                <div class="internal_padding">
+                  <div class="algType"><label><input type="radio" name="alg_type" id="alg_sjn" value="alg_sjn" onchange="changeDefaultText(this.value)"> SJN</label></div>
+                  <div class="algType"><label><input type="radio" name="alg_type" id="alg_rr" value="alg_rr" onchange="changeDefaultText(this.value)"> Round Robin</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="pages internal_padding">
+              <div class="title bold">
+                <p>Jobs</p>
+              </div>
+              <div class="internal_padding">
+                <textarea class="form-control textarea" id="jobs" type="text" required></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="pages internal_padding">
+              <div class="title bold">
+                <p>Arrival Time (ms - #'s only)</p>
+              </div>
+              <div class="internal_padding">
+                <textarea class="form-control textarea" id="arrivalTime" type="number" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="pages internal_padding">
+              <div class="title bold">
+                <p>CPU Cycle (#'s only)</p>
+              </div>
+              <div class="internal_padding">
+                <textarea class="form-control textarea" id="cpuCycle" type="number" required></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%; text-align: center; display: inline-block;">
+          <button class="btn btn-primary" id="evaluate" type="submit">Submit</button>
+          <button class="btn btn-danger" id="reload" type="submit">Reset</button>
+          <div class="checkboxes" style="display: inline-block;">
+            <label for="toChangeText"><input type="checkbox" id="toChangeText" /> <span>Disable examples?</span></label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Daniel W. Anner - Z00231757 - Program #4 - CSIS4251</span>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/holder.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/vendor/popper.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+  <script type="text/javascript">
+    // Basic function to load examples on radio button selection
+    function changeDefaultText(element) {
+      if (!(document.getElementById('toChangeText').checked)) {
+        $("textarea#jobs").val("A,B,C,D,E,F,G,H,I,J");
+        $("textarea#arrivalTime").val("0,3,5,9,10,12,14,16,17,19");
+        $("textarea#cpuCycle").val("16,2,11,6,1,9,4,14,1,8");
+      }
+    }
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116695446-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116695446-1');
+  </script>
+
+</body>
+
+</html>
