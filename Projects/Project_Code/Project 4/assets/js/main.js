@@ -26,21 +26,23 @@ function processTextArea(textarea) {
 
 function parseTextArea(textarea) {
   var ta = textarea.val().split(",");
+  // If the text area doesnt parse as an array, or is empty return an error
   if (!Array.isArray(ta) || (ta[0] === "")) {
     $("<div>ERROR! Please input data to the processes textarea.</div>").appendTo($(".errors"));
     return;
   }
 
-  // Parse both arrays string values into int's
+  // Parse both arrays string values into int's or strings
   var temp = [];
   for (i = 0; i < ta.length; i++) {
+    // This reads: Parse the value as an int, and if returned as a NaN (aka not a number),
+    //  then push the default value - otherwise push the integer to the array
     if (Number.isNaN(parseInt(ta[i]))) {
       temp.push(ta[i]);
     } else {
       temp.push(parseInt(ta[i]));
     }
   }
-
   return temp;
 }
 
@@ -69,15 +71,18 @@ $("#evaluate").on("click", function(e) {
   $("#output").html("");
   $(".errors").html("");
 
+  // Parse the textarea data into arrays, and save them as variables
   var jobs = parseTextArea($("textarea#jobs")),
     arrival = parseTextArea($("textarea#arrivalTime")),
     cycles = parseTextArea($("textarea#cpuCycle")),
     tasks = [];
 
+  // Initilize all sets of data to their own respective array
   for (var i = 0; i < jobs.length; i++) {
     tasks.push(new CPU_Job(jobs[i], arrival[i], cycles[i], 0, 0, 0));
   }
 
+  // Just calling the actual algorithms
   switch (document.querySelector('input[name="alg_type"]:checked').value) {
     case "alg_fcfs":
       fcfs(tasks);
@@ -95,6 +100,7 @@ $("#evaluate").on("click", function(e) {
 });
 
 $("#reload").on("click", function(e) {
+  // Reload the page on reset
   e.preventDefault();
 
   location.reload();
