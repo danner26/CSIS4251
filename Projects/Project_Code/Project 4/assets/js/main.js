@@ -71,6 +71,11 @@ $("#evaluate").on("click", function(e) {
   $("#output").html("");
   $(".errors").html("");
 
+  // Process text areas
+  processTextArea($("textarea#jobs"))
+  processTextArea($("textarea#arrivalTime"))
+  processTextArea($("textarea#cpuCycle"))
+
   // Parse the textarea data into arrays, and save them as variables
   var jobs = parseTextArea($("textarea#jobs")),
     arrival = parseTextArea($("textarea#arrivalTime")),
@@ -112,34 +117,12 @@ $(document).ready(function() {
 
   // Allow Arrival Time to have ONLY numbers
   $("textarea#arrivalTime").keypress(function(e) {
-    var a = [],
-      k = e.which;
-
-    for (var i = 48; i < 58; i++) {
-      a.push(i);
-    }
-
-    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
-      e.preventDefault();
-    }
-
-    $("textarea#arrivalTime").val($("textarea#arrivalTime").val().split(" ").join(","));
+    preventNaN(e, "arrivalTime");
   });
 
   // Allow CPU Cycles to have ONLY numbers
   $("textarea#cpuCycle").keypress(function(e) {
-    var a = [],
-      k = e.which;
-
-    for (var i = 48; i < 58; i++) {
-      a.push(i);
-    }
-
-    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
-      e.preventDefault();
-    }
-
-    $("textarea#cpuCycle").val($("textarea#cpuCycle").val().split(" ").join(","));
+    preventNaN(e, "cpuCycle");
   });
 
   // Allow Jobs to have numbers and letters
@@ -161,3 +144,18 @@ $(document).ready(function() {
     $("textarea#jobs").val($("textarea#jobs").val().split(" ").join(","));
   });
 });
+
+function preventNaN(e, textarea) {
+  var a = [],
+    k = e.which;
+
+  for (var i = 48; i < 58; i++) {
+    a.push(i);
+  }
+
+  if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
+    e.preventDefault();
+  }
+
+  $("textarea#" + textarea + "").val($("textarea#" + textarea + "").val().split(" ").join(","));
+}
