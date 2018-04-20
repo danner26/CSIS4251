@@ -1,56 +1,15 @@
-$(document).ready(function() {
-  // Everytime a user types, it will check if the key is a number or a space, otherwise it doesnt allow it
-  // If there is a space in the field, it will remove and replace it with a comma
-  $("textarea#arrivalTime").keypress(function(e) {
-    var a = [],
-      k = e.which;
-
-    for (var i = 48; i < 58; i++) {
-      a.push(i);
-    }
-
-    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
-      e.preventDefault();
-    }
-
-    $("textarea#arrivalTime").val($("textarea#arrivalTime").val().split(" ").join(","));
-  });
-  $("textarea#cpuCycle").keypress(function(e) {
-    var a = [],
-      k = e.which;
-
-    for (var i = 48; i < 58; i++) {
-      a.push(i);
-    }
-
-    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
-      e.preventDefault();
-    }
-
-    $("textarea#cpuCycle").val($("textarea#cpuCycle").val().split(" ").join(","));
-  });
-  $("textarea#jobs").keypress(function(e) {
-    var a = [],
-      k = e.which;
-
-    for (var i = 48; i < 58; i++) {
-      a.push(i);
-    }
-    for (var i = 97; i < 123; i++) {
-      a.push(i);
-    }
-
-    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
-      e.preventDefault();
-    }
-
-    $("textarea#jobs").val($("textarea#jobs").val().split(" ").join(","));
-  });
-});
+/* * FILENAME :        main.js
+*
+* DESCRIPTION :
+*       Main JS functions to make the site work
+*
+* NOTES :
+*
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #4 - CSIS4251 */
 
 function processTextArea(textarea) {
   var values = $(textarea).val().split(","); // Split the value at our delimiter (a comma)
-  for (i = 0; i < values.length; i++) { // Loop through all values entered
+  for (var i = 0; i < values.length; i++) { // Loop through all values entered
     if ((values[i] === "") || (values[i] === " ")) {
       console.log(values[i] + " is an unallowed value; removing it."); // Log the incident
       values.splice(i, 1); // Remove the value IF it is an empty value (,) or it was whitespace
@@ -106,24 +65,17 @@ function sortTasks(tasklist) {
 $("#evaluate").on("click", function(e) {
   e.preventDefault(); //Prevent the default "submit" action
 
-  $(".errors").html("");
-
-  // Acquire the textarea content and parse them into an array
-  processTextArea($("textarea#jobs"));
-  processTextArea($("textarea#arrivalTime"));
-  processTextArea($("textarea#cpuCycle"));
-
   // Clear the output div before placing new data
   $("#output").html("");
+  $(".errors").html("");
 
-  var jobs = parseTextArea($("textarea#jobs"));
-  var arrival = parseTextArea($("textarea#arrivalTime"));
-  var cycles = parseTextArea($("textarea#cpuCycle"));
-
-  var tasks = [];
+  var jobs = parseTextArea($("textarea#jobs")),
+    arrival = parseTextArea($("textarea#arrivalTime")),
+    cycles = parseTextArea($("textarea#cpuCycle")),
+    tasks = [];
 
   for (var i = 0; i < jobs.length; i++) {
-    tasks.push(new Solver(jobs[i], arrival[i], cycles[i], 0, 0, 0));
+    tasks.push(new CPU_Job(jobs[i], arrival[i], cycles[i], 0, 0, 0));
   }
 
   switch (document.querySelector('input[name="alg_type"]:checked').value) {
@@ -146,4 +98,60 @@ $("#reload").on("click", function(e) {
   e.preventDefault();
 
   location.reload();
+});
+
+$(document).ready(function() {
+  // Everytime a user types, it will check if the key is a number or a space, otherwise it doesnt allow it (unless specified)
+  // If there is a space in the field, it will remove and replace it with a comma
+
+  // Allow Arrival Time to have ONLY numbers
+  $("textarea#arrivalTime").keypress(function(e) {
+    var a = [],
+      k = e.which;
+
+    for (var i = 48; i < 58; i++) {
+      a.push(i);
+    }
+
+    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
+      e.preventDefault();
+    }
+
+    $("textarea#arrivalTime").val($("textarea#arrivalTime").val().split(" ").join(","));
+  });
+
+  // Allow CPU Cycles to have ONLY numbers
+  $("textarea#cpuCycle").keypress(function(e) {
+    var a = [],
+      k = e.which;
+
+    for (var i = 48; i < 58; i++) {
+      a.push(i);
+    }
+
+    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
+      e.preventDefault();
+    }
+
+    $("textarea#cpuCycle").val($("textarea#cpuCycle").val().split(" ").join(","));
+  });
+
+  // Allow Jobs to have numbers and letters
+  $("textarea#jobs").keypress(function(e) {
+    var a = [],
+      k = e.which;
+
+    for (var i = 48; i < 58; i++) {
+      a.push(i);
+    }
+    for (var i = 97; i < 123; i++) {
+      a.push(i);
+    }
+
+    if (!(a.indexOf(k) >= 0) && !(k === 32) && !(k === 44)) {
+      e.preventDefault();
+    }
+
+    $("textarea#jobs").val($("textarea#jobs").val().split(" ").join(","));
+  });
 });

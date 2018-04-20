@@ -1,5 +1,19 @@
+/* * FILENAME :        standardOutput.js
+*
+* DESCRIPTION :
+*       I noticed some function do exactly the same thing, except the difference
+*        is how the jobs are sorted in the cue. Well, after sorting them properly,
+*        they are passed here to be output
+*
+* NOTES :
+*
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #4 - CSIS4251 */
+
 function standardOutput(alg, jobs) {
   var algName = "";
+  var time = 0,
+    allTA = 0,
+    allWT = 0;
   switch (alg) {
     case "fcfs":
       algName = "First-Come First-Serve";
@@ -16,17 +30,16 @@ function standardOutput(alg, jobs) {
   }
   var outputPage = $("#output");
   $("<div style='width: 100%; text-align: centered;'><h4><u>" + algName + "</u></h4></div><br />").appendTo(outputPage);
-  var time = 0,
-    allTA = 0,
-    allWT = 0;
 
   var table = $("<table class='table'><thead><tr><th scope='col'>Job</th> \
     <th scope='col'>Arrival</th><th scope='col'>CPU Cycle</th><th scope='col'>Wait Time</th>\
     <th scope='col'>Turn Around</th></tr></thead><tbody>");
+
   for (var i = 0; i < jobs.length; i++) {
-    var tr = $("<tr>");
-    var job = jobs[i];
-    var ta = job.getCPUCycle - job.getArrival;
+    var tr = $("<tr>"),
+      job = jobs[i],
+      ta = job.getCPUCycle - job.getArrival;
+
     job.setTurnAround(ta);
     allTA += ta;
     time += job.getCPUCycle;

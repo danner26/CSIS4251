@@ -8,6 +8,7 @@
 *
 * AUTHOR :    Daniel W. Anner - Z00231757 - Program #4 - CSIS4251
 */
+
 input[type=text] {
   float: left;
   font-weight: bold;
@@ -15,34 +16,43 @@ input[type=text] {
   text-align: center;
   width: 40px;
 }
+
 .bold {
   font-weight: bold;
 }
+
 .title {
   margin-bottom: 4px;
 }
+
 .title p {
   margin-bottom: 4px;
 }
+
 .internal_padding {
   padding-left: 2px;
 }
+
 .internal_padding label {
   padding-top: 2px;
 }
+
 .checkboxes {
   display: inline-block;
   margin-left: 4px;
   vertical-align: middle;
 }
+
 .checkboxes label {
   display: inline-block;
   padding-right: 10px;
   white-space: nowrap;
 }
+
 .checkboxes input {
   vertical-align: middle;
 }
+
 .checkboxes label span {
   vertical-align: middle;
 }
@@ -52,30 +62,38 @@ fieldset {
 }
 
 .output {
-height: 100%;
+  height: 100%;
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 
 p {
   margin-bottom: 3px;
 }
+
 .errors {
   color: red;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
+
 .algType {
-    display: inline-block;
-    width:45%;
+  display: inline-block;
+  width: 45%;
 }

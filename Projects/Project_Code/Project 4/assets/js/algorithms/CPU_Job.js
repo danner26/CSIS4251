@@ -1,4 +1,14 @@
-var Solver = class {
+/* * FILENAME :        CPU_Job.js
+*
+* DESCRIPTION :
+*       JS Script to initilize a class object, CPU_Job, which allows us the set/get
+*        information in an easier form
+*
+* NOTES :
+*
+* AUTHOR :    Daniel W. Anner - Z00231757 - Program #4 - CSIS4251 */
+
+var CPU_Job = class {
   constructor(job, arrival, cycle, waitTime, turnAround, completionTime) {
     this.job = job;
     this.arrival = arrival;
@@ -8,41 +18,42 @@ var Solver = class {
     this.completionTime = completionTime;
   }
 
-  get getJob() {
-    return this.job;
-  }
   setJob(job) {
     this.job = job;
-  }
-  get getArrival() {
-    return this.arrival;
   }
   setArrival(arrival) {
     this.arrival = arrival;
   }
-  get getCPUCycle() {
-    return this.cpuCycle;
-  }
   setCPUCycle(cycle) {
     this.cpuCycle = cycle;
-  }
-  get getWaitTime() {
-    return this.waitTime;
   }
   setWaitTime(time) {
     this.waitTime = time;
   }
-  get getTurnAround() {
-    return this.turnAround;
-  }
   setTurnAround(ta) {
     this.turnAround = ta;
   }
-  get getCompletionTime() {
-    return this.completionTime;
-  }
   setCompletionTime(time) {
     this.completionTime = time;
+  }
+
+  get getJob() {
+    return this.job;
+  }
+  get getArrival() {
+    return this.arrival;
+  }
+  get getCPUCycle() {
+    return this.cpuCycle;
+  }
+  get getWaitTime() {
+    return this.waitTime;
+  }
+  get getTurnAround() {
+    return this.turnAround;
+  }
+  get getCompletionTime() {
+    return this.completionTime;
   }
 
   compareTo(second) {
